@@ -1,4 +1,4 @@
-# AI-Powered Exam Grading Assistant
+# An AI-Powered Exam Grading Assistant
 
 A modern desktop application built with Electron, React, and TypeScript that helps educators grade exams using AI assistance and screen capture technology.
 
