@@ -109,7 +109,7 @@ const GradingReview: React.FC<GradingReviewProps> = ({
         )}
       </div>
       <div className="mt-2 text-sm text-gray-400">
-        Confidence: {feedback?.grading.confidence ?? 0}%
+        Confidence: {(feedback?.grading?.confidence ?? 0) * 100}%
       </div>
     </div>
   );
