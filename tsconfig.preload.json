@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "target": "ES2020",
+    "module": "CommonJS",
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "strict": true,
+    "outDir": "dist/electron",
+    "rootDir": "electron",
+    "typeRoots": ["./node_modules/@types"],
+    "types": ["node"],
+    "lib": ["DOM", "ES2020"],
+    "noEmitOnError": true,
+    "allowJs": true,
+    "skipLibCheck": true
+  },
+  "include": ["electron/preload.ts"],
+  "exclude": ["node_modules"]
+}

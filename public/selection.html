@@ -1,0 +1,91 @@
+<!-- selection.html -->
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body {
+      margin: 0;
+      overflow: hidden;
+      background: rgba(0, 0, 0, 0.2);
+      cursor: crosshair;
+    }
+    
+    #selection {
+      position: absolute;
+      border: 2px solid #00ff00;
+      background: rgba(0, 255, 0, 0.1);
+      display: none;
+    }
+    
+    #instructions {
+      position: fixed;
+      top: 10%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: white;
+      font-family: sans-serif;
+      font-size: 18px;
+      text-align: center;
+      padding: 20px;
+      background: rgba(0, 0, 0, 0.7);
+      border-radius: 8px;
+      pointer-events: none;
+    }
+  </style>
+</head>
+<body>
+  <div id="selection"></div>
+  <div id="instructions">Click and drag to select area to capture<br>Press Esc to cancel</div>
+  <script>
+    const { ipcRenderer } = require('electron');
+    
+    let isSelecting = false;
+    let startX, startY;
+    const selection = document.getElementById('selection');
+    
+    document.addEventListener('mousedown', (e) => {
+      isSelecting = true;
+      startX = e.clientX;
+      startY = e.clientY;
+      selection.style.display = 'block';
+      selection.style.left = startX + 'px';
+      selection.style.top = startY + 'px';
+    });
+    
+    document.addEventListener('mousemove', (e) => {
+      if (!isSelecting) return;
+      
+      const currentX = e.clientX;
+      const currentY = e.clientY;
+      
+      const width = currentX - startX;
+      const height = currentY - startY;
+      
+      selection.style.width = Math.abs(width) + 'px';
+      selection.style.height = Math.abs(height) + 'px';
+      selection.style.left = (width > 0 ? startX : currentX) + 'px';
+      selection.style.top = (height > 0 ? startY : currentY) + 'px';
+    });
+    
+    document.addEventListener('mouseup', () => {
+      if (!isSelecting) return;
+      isSelecting = false;
+      
+      const bounds = selection.getBoundingClientRect();
+      ipcRenderer.send('SELECTION_COMPLETE', {
+        x: Math.round(bounds.x),
+        y: Math.round(bounds.y),
+        width: Math.round(bounds.width),
+        height: Math.round(bounds.height)
+      });
+    });
+    
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        ipcRenderer.send('SELECTION_CANCELLED');
+        window.close();
+      }
+    });
+  </script>
+</body>
+</html>
