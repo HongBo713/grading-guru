@@ -76,15 +76,6 @@ Configure the application through the settings panel:
 
 ## Development
 
-### Tech Stack
-- Electron
-- React
-- TypeScript
-- TailwindCSS
-- ONNX Runtime
-- OpenAI API
-
-
 ### Building
 
 ```bash
