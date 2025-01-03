@@ -28,10 +28,10 @@ A modern desktop application built with Electron, React, and TypeScript that hel
 
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/exam-grading-assistant.git
+git clone https://github.com/HongBo713/grading-guru.git
 
 # Navigate to project directory
-cd exam-grading-assistant
+cd grading-guru
 
 # Install dependencies
 npm install
@@ -48,11 +48,6 @@ npm run dev
    - Obtain an API key from OpenAI
    - Configure in the settings panel
    - Select preferred model
-
-2. **ONNX Local Model**
-   - Place your ONNX model in the appropriate directory
-   - Configure model path in settings
-   - Ensure compatibility with system requirements
 
 ### Application Settings
 
@@ -121,7 +116,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## Acknowledgments
 
 - OpenAI for GPT-4 API
-- ONNX Runtime team
 - Electron community
 - React development team
 
