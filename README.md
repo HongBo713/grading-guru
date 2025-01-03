@@ -84,16 +84,6 @@ Configure the application through the settings panel:
 - ONNX Runtime
 - OpenAI API
 
-### Project Structure
-```
-├── src/
-│   ├── main/           # Electron main process
-│   ├── renderer/       # React frontend
-│   ├── preload/        # Preload scripts
-│   └── types/          # TypeScript definitions
-├── public/             # Static assets
-└── dist/              # Compiled files
-```
 
 ### Building
 
@@ -105,9 +95,6 @@ npm run build
 npm run dist
 ```
 
-## Contributing
-
-Contributions are welcome! Please read our [Contributing Guide](CONTRIBUTING.md) for details on our code of conduct and the process for submitting pull requests.
 
 ## License
 
